@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load socialaccount %}
+<head>
+    <meta charset="UTF-8">
+    <title>Visitor</title>
+    <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+<body>
+ <div class="bg-image"
+  style="background-image: url('https://oir.mobi/uploads/posts/2019-12/1576839628_1-1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100%;
+    height: 100vh;
+    overflow: auto">
+     <blockquote class="blockquote text-center"  style ="
+     color: #FDFAA2;
+    margin-top: 50px;
+    margin-left: 250px;">
+            {% for serv in social %}
+        <Img src={{serv.extra_data.photo_big}} width="150px" height="150px">
+                {% endfor %}
+
+                {% for serv in social %}
+        <h4>{{ serv.extra_data.first_name }}
+         {{ serv.extra_data.last_name }}</h4>
+                {% endfor %}
+         <button type="button"  class="btn btn-primary" ><a href="/lk" style = "
+        color:white;
+    text-decoration: none; " >На главную</a></button>
+
+         </blockquote>
+
+
+
+
+
+<form method="post" id="forma">
+    {% csrf_token %}
+      <div style="width: 600px;
+                  margin:0 auto;">
+              {{form.place_name}}<br>
+          {{form.review}}<br>
+          <span>{{ error }}</span>
+    <button class="btn btn-primary btn-sm" type="submit"  >Добавить воспоминание</button>
+
+      </div>
+</form>
+ </div>
+</body>
+</html>
